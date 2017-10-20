@@ -1,5 +1,5 @@
 {
-  "name": "shotbot",
+  "name": "@mobileboost/shotbot",
   "version": "0.0.1",
   "description": "Crawl a website taking screen shots in various screen sizes.",
   "main": "screenshot.js",
