@@ -1,0 +1,29 @@
+{
+  "name": "shotbot",
+  "version": "0.0.1",
+  "description": "Crawl a website taking screen shots in various screen sizes.",
+  "main": "screenshot.js",
+  "dependencies": {
+    "chrome-remote-interface": "^0.24.4",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "make tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "/webheroesinc/shotbot"
+  },
+  "bugs": {
+    "url": "https://github.com/webheroesinc/shotbot/issues"
+  },
+  "keywords": [
+    "screenshot",
+    "full-page",
+    "headless-chrome"
+  ],
+  "author": "Matthew Brisebois",
+  "license": "",
+  "readme": "README.md"
+}

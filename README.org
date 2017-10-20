@@ -1,0 +1,19 @@
+
+* ShotBot
+  *DISCLAIMER* Not in a working state
+
+  This module is currently in developement and is not flexible or ready for use in anyway.
+
+* screenshot.js
+
+** Command Line Arguments
+   
+   | ~--url [url]~               | The target website for taking screenshots                                |
+   | ~--format [jpeg,png]~       | Output image format (default png)                                        |
+   | ~--viewportWidth [number]~  | Screen size width (default 1440px)                                       |
+   | ~--viewportHeight [number]~ | Screen size height (default 900px)                                       |
+   | ~--delay [secdons]~         | Delay in seconds after page loads (default 0s)                           |
+   | ~--userAgent [?]~           | ?                                                                        |
+   | ~--fileName [name]~         | (default screenshot.png)                                                 |
+   | ~--fullPage~                | If present viewportHeight will be ignored to take a full page screenshot |
+   

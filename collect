@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Run chrome
+echo "Starting headless chrome @ localhost:9222"
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --headless --hide-scrollbars --remote-debugging-port=9222 --disable-gpu &
+chromepid=$!;
+echo "Chrome PID: $chromepid"
+
+xs=(xs 375 667);
+sm=(sm 768 1024);
+md=(md 1024 768);
+lg=(lg 1440 900);
+sizes=("$xs" "$sm" "$md" "$lg");
+
+xs="xs 375 667";
+sm="sm 768 1024";
+md="md 1024 768";
+lg="lg 1440 900";
+sizes=("$xs" "$sm" "$md" "$lg");
+
+pages=("home" "plans" "plans/835-1183" "gallery" "resources" "contact");
+
+for path in "${pages[@]}"; do
+    echo "Getting ${xs[0]} screenshot for https://rrhomebuilding.ca/$path";
+    echo node screenshot.js --url https://rrhomebuilding.ca/${path} --delay 5000 --full --filename rrhb_${path//\//_}_xs.png --viewportWidth ${xs[1]};
+    node screenshot.js --url https://rrhomebuilding.ca/${path} --delay 5000 --full --filename rrhb_${path//\//_}_xs.png --viewportWidth ${xs[1]};
+done
+
+# for path in "${pages[@]}"; do
+#     echo "Getting ${sm[0]} screenshot for https://rrhomebuilding.ca/$path";
+#     echo node screenshot.js --url https://rrhomebuilding.ca/${path} --delay 5000 --full --filename rrhb_${path//\//_}_sm.png --viewportWidth ${sm[1]};
+#     node screenshot.js --url https://rrhomebuilding.ca/${path} --delay 5000 --full --filename rrhb_${path//\//_}_sm.png --viewportWidth ${sm[1]};
+# done
+
+# for path in "${pages[@]}"; do
+#     echo "Getting ${md[0]} screenshot for https://rrhomebuilding.ca/$path";
+#     echo node screenshot.js --url https://rrhomebuilding.ca/${path} --delay 5000 --full --filename rrhb_${path//\//_}_md.png --viewportWidth ${md[1]};
+#     node screenshot.js --url https://rrhomebuilding.ca/${path} --delay 5000 --full --filename rrhb_${path//\//_}_md.png --viewportWidth ${md[1]};
+# done
+
+# for path in "${pages[@]}"; do
+#     echo "Getting ${lg[0]} screenshot for https://rrhomebuilding.ca/$path";
+#     echo node screenshot.js --url https://rrhomebuilding.ca/$path --delay 5000 --full --filename rrhb_${path//\//_}_lg.png --viewportHeight ${lg[1]};
+#     node screenshot.js --url https://rrhomebuilding.ca/$path --delay 5000 --full --filename rrhb_${path//\//_}_lg.png --viewportHeight ${lg[1]};
+# done;
+
+# for size in "${sizes[@]}"; do
+#     size=($size);
+#     echo "Getting ${size[0]} (${size[1]},${size[2]}) screenshot for https://rrhomebuilding.ca/$path";
+#     echo node screenshot.js --url https://rrhomebuilding.ca/home --delay 5000 --filename rrhb_${size[0]}_${size[1]}x${size[2]}.png --viewportWidth ${size[1]} --viewportHeight ${size[2]};
+#     node screenshot.js --url https://rrhomebuilding.ca/home --delay 5000 --filename rrhb_${size[0]}_${size[1]}x${size[2]}.png --viewportWidth ${size[1]} --viewportHeight ${size[2]};
+# done
+
+echo "Killing headless Chrome with PID $chromepid";
+kill $chromepid;
